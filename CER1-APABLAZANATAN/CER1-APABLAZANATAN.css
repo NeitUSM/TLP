@@ -1,0 +1,57 @@
+.navbar{
+    padding: 0px;
+}
+
+#carrusel{
+    padding:0px;
+}
+
+#imagenes_card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+#info{
+    padding: 20px;
+}
+
+#boton1{
+    background-color: #6C757D;
+    color: white;
+}
+
+#arriba, #abajo{
+    background-color: #F25252;
+}
+
+#arriba{
+    height: 50px;
+    text-align: center;
+}
+
+#medio{
+    height: 20px;
+    background-color: #FFFFFF;
+}
+
+#abajo{
+    height: 100px;
+    text-align: center;
+}
+
+#face, #yt, #ig{
+    width: 40px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#face:hover, #ig:hover, #yt:hover {
+    background-color: #F6C270;
+}
+
+#foto_final{
+    padding-top: 10px;
+    width: 50px;
+    height: 50px;
+}
