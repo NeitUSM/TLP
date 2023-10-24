@@ -1,0 +1,48 @@
+{% include 'AplicacionPrueba/Base.html'%}
+
+{% block content %}
+<title>{{title}}</title>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div id="select" class="col-md-4 d-md-block d-sm-block d-block d-lg-block d-xl-block d-xxl-none">
+            <form method="POST" action="{% url 'comunicados' %}">
+                {% csrf_token %}
+                <select class="form-select" aria-label="Default select example" name="departamento">
+                    <option selected>Departamentos</option>
+                    {% for c in lista %}
+                    <option value="{{c}}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+                <button id='boton' type="submit" class="btn btn-primary">Filtrar</button>
+            </form>
+        </div>
+        <div class="col-md-7"></div>
+    </div>
+    <div class="row">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            {%for c in comunicados %}
+            {% if c.visible %}
+            {% if c.entidad.nombre == filtro or filtro == "Departamentos"%} 
+            <div class="col d-flex justify-content-center">
+                <div class="card m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{c.titulo}}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{c.entidad}}</h6>
+                        <p class="card-text">
+                            {{c.detalle}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+            {%endif%}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+</div>
+
+{% endblock %}

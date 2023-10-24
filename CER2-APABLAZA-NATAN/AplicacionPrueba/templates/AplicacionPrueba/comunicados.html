@@ -1,0 +1,64 @@
+{% extends 'AplicacionPrueba/Base.html' %}
+
+{% block content %}
+
+{%load static%}
+
+<link rel="stylesheet" href="{%static 'AplicacionPrueba/css/cer2p2.css'%}">
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div id='select' class="col-md-3">
+            <form method="POST" action="{% url 'filtro' %}">
+                {% csrf_token %}
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Departamento</option>
+                    {% for c in lista %}
+                        <option value="{{c}}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submint" class="btn btn-primary">Filtrar</button>
+            </form>
+        </div>
+        <div class="col-md-7"></div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            <h2>Listas de Comunicados</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Detalle</th>
+                            <th>Tipo</th>
+                            <th>Entidad</th>
+                            <th>Fecha Publicación</th>
+                            <th>Publicado por</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for c in comunicados%}
+                        <tr>
+                            <td>{{c.titulo}}</td>
+                            <td>{{c.detalle_corto}}</td>
+                            <td>{{c.tipo}}</td>
+                            <td>{{c.entidad}}</td>
+                            <td>{{c.fecha_publicacion}}</td>
+                            <td>{{c.publicado_por}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<title>USM | {{title}}</title>
+
+
+{% endblock %}
+
